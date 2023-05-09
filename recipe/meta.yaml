@@ -21,7 +21,7 @@ requirements:
     - pip
     - python
     - setuptools
-    - setuptools-scm
+    - setuptools-scm 6.0.1
     - wheel
   run:
     - importlib-metadata  # [py<38]
