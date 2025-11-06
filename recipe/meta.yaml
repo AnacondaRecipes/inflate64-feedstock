@@ -1,50 +1,55 @@
 {% set name = "inflate64" %}
-{% set version = "0.3.1" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/inflate64-{{ version }}.tar.gz
-  sha256: b52dd8fefd2ba179e5dfa18d6eca7e2fc822584616271c039d5ef1f9ca90c71c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/inflate64-{{ version }}.tar.gz
+  sha256: a89edd416c36eda0c3a5d32f31ff1555db2c5a3884aa8df95e8679f8203e12ee
 
 build:
-  skip: true  # [py<37]
+  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
   host:
     - pip
     - python
-    - setuptools
-    - setuptools-scm
+    - setuptools >=45
     - wheel
+    - setuptools-scm >=6.0.1
+    - toml
   run:
-    - importlib-metadata  # [py<38]
     - python
 
 test:
+  source_files:
+    - tests
   imports:
     - inflate64
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests
   requires:
     - pip
+    - pytest
 
 about:
-  description: A python package to provide Deflater and Inflater class to compress and decompress with Enhanced Deflate compression algorithm.
-  home: https://pypi.org/project/inflate64/
-  dev_url: https://codeberg.org/miurahr/inflate64
-  doc_url: https://codeberg.org/miurahr/inflate64/src/branch/main/README.rst
+  home: https://pypi.org/project/inflate64
   summary: deflate64 compression/decompression library
+  description: A python package to provide Deflater and Inflater class to compress and decompress with Enhanced Deflate compression algorithm.
   license: LGPL-2.1-or-later
   license_family: LGPL
-  license_file:
-    - COPYING
+  license_file: COPYING
+  dev_url: https://codeberg.org/miurahr/inflate64
+  doc_url: https://inflate64.readthedocs.io
 
 extra:
   recipe-maintainers:
