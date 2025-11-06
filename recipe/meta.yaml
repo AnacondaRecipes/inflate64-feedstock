@@ -42,15 +42,14 @@ test:
     - pytest
 
 about:
-  description: A python package to provide Deflater and Inflater class to compress and decompress with Enhanced Deflate compression algorithm.
-  home: https://pypi.org/project/inflate64/
-  dev_url: https://codeberg.org/miurahr/inflate64
-  doc_url: https://codeberg.org/miurahr/inflate64/src/branch/main/README.rst
+  home: https://pypi.org/project/inflate64
   summary: deflate64 compression/decompression library
+  description: A python package to provide Deflater and Inflater class to compress and decompress with Enhanced Deflate compression algorithm.
   license: LGPL-2.1-or-later
   license_family: LGPL
-  license_file:
-    - COPYING
+  license_file: COPYING
+  dev_url: https://codeberg.org/miurahr/inflate64
+  doc_url: https://inflate64.readthedocs.io
 
 extra:
   recipe-maintainers:
