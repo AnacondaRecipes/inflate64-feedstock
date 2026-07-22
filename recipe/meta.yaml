@@ -28,12 +28,6 @@ requirements:
     - toml
   run:
     - python
-  run_constrained:
-    # docs
-    - sphinx >=5.0
-    # check
-    - mypy >=1.10.0
-    - mypy_extensions >=0.4.1
 
 test:
   source_files:
