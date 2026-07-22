@@ -56,7 +56,7 @@ about:
   license_family: LGPL
   license_file: COPYING
   dev_url: https://github.com/miurahr/inflate64/
-  doc_url: https://inflate64.readthedocs.io/en/latest
+  doc_url: https://inflate64.readthedocs.io
 
 extra:
   recipe-maintainers:
